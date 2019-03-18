@@ -7,6 +7,9 @@ server = Flask(__name__)
 @bot.message_handler(content_types=["text"])
 def handle_text(message):
     bot.send_message(message.chat.id,"Test")
+@bot.message_handler(commands=["start"])
+def handler_command(message):
+    bot.send_message(message.chat.id,"Welcome to my chat")
 
 bot.send_message(264212583,"test")
 
