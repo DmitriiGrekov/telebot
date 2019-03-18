@@ -13,7 +13,7 @@ def mes_handler(message):
                 bot.send_message(message.chat.id,'Красава,уважаю')
         elif message.text=='Нет':
                 bot.send_message(message.chat.id,'Ты случайно не ринат')
-                photo = open('/tmp/photo.png', 'rb')
+                photo = open('rinat.jpg', 'rb')
                 bot.send_photo(message.chat.id, photo)
                 
         else:
