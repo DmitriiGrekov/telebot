@@ -6,3 +6,5 @@ def handle_text(message):
     bot.send_message(message.chat.id,"Test")
 
 bot.send_message(264212583,"test")
+
+bot.polling(none_stop=True, interval=0)
