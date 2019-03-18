@@ -15,6 +15,10 @@ def handler_welkome(message):
     if message.text == "Hi":
         bot.send_message(message.chat.id,"And i hi you")
 
+markup = telebot.types.ReplyKeyboardMarkup()
+markup.row('a', 'v')
+markup.row('c', 'd', 'e')
+bot.send_message(message.chat.id, "Choose one letter:", reply_markup=markup)
 bot.polling()
 
 
