@@ -10,11 +10,11 @@ def send_welcome(message):
 @bot.message_handler(content_type=['text'])
 def mes_handler(message):
         if message.text=="Да":
-                bot.send_message(message.chat.id,'Красава,уважаю')
+                bot.reply_to(message,'Красава,уважаю')
         elif message.text=='Нет':
-                bot.send_message(message.chat.id,'Рустик,ты что-ли')
+                bot.reply_to(message,'Рустик,ты что-ли')
         else:
-                bot.send_message(message.chat.id,'Ты настолько тупой что даже не можешь правильно написать.Это точно Руслан' )
+                bot.reply_to(message,'Ты настолько тупой что даже не можешь правильно написать.Это точно Руслан' )
         
 
 
