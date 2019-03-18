@@ -7,14 +7,14 @@ bot = telebot.TeleBot("797549243:AAE-nR3eITIaO-OberdmXRi2Poywlpj3_0w")
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
 	bot.reply_to(message, "Руслан гей? -> Да/Нет")
-@bot.message_handler(content_type=['text'])
+@bot.message_handler(content_types=['text'])
 def mes_handler(message):
         if message.text=="Да":
-                bot.reply_to(message,'Красава,уважаю')
+                bot.send_message(message.chat.id,'Красава,уважаю')
         elif message.text=='Нет':
-                bot.reply_to(message,'Рустик,ты что-ли')
+                bot.send_message(message.chat.id,'Рустик,ты что-ли')
         else:
-                bot.reply_to(message,'Ты настолько тупой что даже не можешь правильно написать.Это точно Руслан' )
+                bot.send_message(message.chat.id,'Ты настолько тупой что даже не можешь правильно написать.Это точно Руслан' )
         
 
 
