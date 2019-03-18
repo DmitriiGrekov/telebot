@@ -6,19 +6,19 @@ bot = telebot.TeleBot("797549243:AAE-nR3eITIaO-OberdmXRi2Poywlpj3_0w")
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-	bot.reply_to(message, "Howdy, how are you doing?")
+	bot.reply_to(message, "Руслан гей? -> Да/Нет")
+@bot.message_handler(content_type=['text'])
+def mes_handler(message):
+        if message.text=="Да":
+                bot.send_message(message.chat.id,'Красава,уважаю')
+        elif message.text=='Нет':
+                bot.send_message(message.chat.id,'Рустик,ты что-ли')
+        else:
+                bot.send_message(message.chat.id,'Ты настолько тупой что даже не можешь правильно написать.Это точно Руслан' )
+        
 
 
 
-@bot.message_handler(content_types=["text"])
-def handler_welkome(message):
-    if message.text == "Hi":
-        bot.send_message(message.chat.id,"And i hi you")
-
-markup = telebot.types.ReplyKeyboardMarkup()
-markup.row('a', 'v')
-markup.row('c', 'd', 'e')
-bot.send_message(message.chat.id, "Choose one letter:", reply_markup=markup)
 bot.polling()
 
 
