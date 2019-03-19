@@ -1,5 +1,5 @@
 import telebot
-bot=telebot.Telebot(token="797549243:AAE-nR3eITIaO-OberdmXRi2Poywlpj3_0w")
+bot=telebot.Telebot("797549243:AAE-nR3eITIaO-OberdmXRi2Poywlpj3_0w")
 @bot.message_handler(commands=["start"])
 def firest(message):
     key=telebot.types.ReplyKeyboardMarkup(True,False)
