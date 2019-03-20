@@ -44,6 +44,7 @@ def translated_menu_2(message):
         bot.register_next_step_handler(send,translated_menu_3)
     
 def translated_menu_3(message):
+    bot.send_message(message.chat.id,lang1)
     if message.text == 'Рус':
         lang2='ru'
         
@@ -70,7 +71,7 @@ def translated(message):
     parametrs={'key':key,'lang':'','text':TEXT}
     
     r=requests.post(url,)
-    bot.send_message(message.chat.id,Lang)
+    bot.send_message(message.chat.id,lang2)
     
     
     
