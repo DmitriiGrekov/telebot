@@ -3,6 +3,7 @@ import requests
 bot = telebot.TeleBot("797549243:AAE-nR3eITIaO-OberdmXRi2Poywlpj3_0w")
 lang1=""
 lang2=''
+flag=True
 
 
 @bot.message_handler(commands=["start"])
@@ -46,28 +47,33 @@ def translated_menu_2(message):
     
 def translated_menu_3(message):
     global lang2
+    global flag
     bot.send_message(message.chat.id,lang1)
     if message.text == 'Рус':
         lang2='ru'
         
-        send=bot.send_message(message.chat.id,"Введите фразу")
-        bot.register_next_step_handler(send,translated)
+        while flag:
+            send=bot.send_message(message.chat.id,"Введите фразу")
+            bot.register_next_step_handler(send,translated)
     
     
     elif message.text == 'Англ':
         lang2='en'
+        while flag:
+            send=bot.send_message(message.chat.id,"Введите фразу")
+            bot.register_next_step_handler(send,translated)
         
-        send=bot.send_message(message.chat.id,"Введите фразу")
-        bot.register_next_step_handler(send,translated)
     
     elif message.text == 'Франц':
         lang2='fr'
-        send=bot.send_message(message.chat.id,"Введите фразу")
-        bot.register_next_step_handler(send,translated)
+        while flag:
+            send=bot.send_message(message.chat.id,"Введите фразу")
+            bot.register_next_step_handler(send,translated)
 
 def translated(message):
     url='https://translate.yandex.net/api/v1.5/tr.json/translate?'
     key='trnsl.1.1.20190201T172728Z.34034e93ef318814.4cd85f71122011aa48770690493d232d5ff78c60'
+    
     TEXT=message.text
     LANg=lang1+"-"+lang2
     r=requests.post(url,data={'key':key,'text':TEXT,'lang':LANg})
