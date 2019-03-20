@@ -77,8 +77,8 @@ def translated(message):
     bot.send_message(message.chat.id,*eval(r.text)['text'])
     key=telebot.types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard=True)
     key.row("/start",)
-    send=bot.send_message(message.chat.id,"Введите фразу",reply_markup=key)
-    bot.register_next_step_handler(send,firest)
+    bot.send_message(message.chat.id,"Введите фразу",reply_markup=key)
+    
     
     
     
