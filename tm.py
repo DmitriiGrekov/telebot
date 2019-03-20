@@ -67,7 +67,10 @@ def translated_menu_3(message):
         send=bot.send_message(message.chat.id,"Введите фразу")
         bot.register_next_step_handler(send,translated)
 
-def translated(message): 
+def translated(message):
+    key=telebot.types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard=True)
+    key.row("/start",)
+    send=bot.send_message(message.chat.id,"",reply_markup=key)
     if message.text=="/start":
         bot.register_next_step_handler(send,firest)
     else:
@@ -80,11 +83,8 @@ def translated(message):
         LANg=lang1+"-"+lang2
         r=requests.post(url,data={'key':key,'text':TEXT,'lang':LANg})
         bot.send_message(message.chat.id,*eval(r.text)['text'])
-        key=telebot.types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard=True)
-        key.row("/start",)
-        send=bot.send_message(message.chat.id,"Введите фразу",reply_markup=key)
-        bot.register_next_step_handler(send,translated)
         
+        bot.register_next_step_handler(send,translated)
     
     
     
