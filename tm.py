@@ -52,36 +52,39 @@ def translated_menu_3(message):
     if message.text == 'Рус':
         lang2='ru'
         
-        send=bot.send_message(message.chat.id,"Введите фразу")
+        send=bot.send_message(message.chat.id,"")
         bot.register_next_step_handler(send,translated)
     
     
     elif message.text == 'Англ':
         lang2='en'
         
-        send=bot.send_message(message.chat.id,"Введите фразу")
+        send=bot.send_message(message.chat.id,"")
         bot.register_next_step_handler(send,translated)
     
     elif message.text == 'Франц':
         lang2='fr'
-        send=bot.send_message(message.chat.id,"Введите фразу")
+        send=bot.send_message(message.chat.id,"")
         bot.register_next_step_handler(send,translated)
 
 def translated(message):
-    if message.text=="/start":
-        bot.register_next_step_handler(send,firest)
-    else:
-        bot.register_next_step_handler(send,translated)
-    url='https://translate.yandex.net/api/v1.5/tr.json/translate?'
-    key='trnsl.1.1.20190201T172728Z.34034e93ef318814.4cd85f71122011aa48770690493d232d5ff78c60'
-    
-    TEXT=message.text
-    LANg=lang1+"-"+lang2
-    r=requests.post(url,data={'key':key,'text':TEXT,'lang':LANg})
-    bot.send_message(message.chat.id,*eval(r.text)['text'])
     key=telebot.types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard=True)
     key.row("/start",)
     send=bot.send_message(message.chat.id,"Введите фразу",reply_markup=key)
+    if message.text=="/start":
+        bot.register_next_step_handler(send,firest)
+    else:
+        url='https://translate.yandex.net/api/v1.5/tr.json/translate?'
+        key='trnsl.1.1.20190201T172728Z.34034e93ef318814.4cd85f71122011aa48770690493d232d5ff78c60'
+    
+        TEXT=message.text
+        LANg=lang1+"-"+lang2
+        r=requests.post(url,data={'key':key,'text':TEXT,'lang':LANg})
+        bot.send_message(message.chat.id,*eval(r.text)['text'])
+        bot.register_next_step_handler(send,translated)
+        
+    
+    
     
     
     
