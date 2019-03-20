@@ -41,7 +41,7 @@ def translated(message):
     TEXT=message.text
     LANg=lang1
     r=requests.post(url,data={'key':key,'text':TEXT,'lang':LANg})
-    bot.send_message(message.chat,id,r.text)
+    bot.send_message(message.chat.id,r.text)
     
     
     
