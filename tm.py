@@ -77,8 +77,11 @@ def translated(message):
     bot.send_message(message.chat.id,*eval(r.text)['text'])
     key=telebot.types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard=True)
     key.row("/start",)
-    bot.send_message(message.chat.id,"Введите фразу",reply_markup=key)
-    
+    send=bot.send_message(message.chat.id,"Введите фразу",reply_markup=key)
+    if message.text=="/start":
+        bot.register_next_step_handler(send,firest)
+    else:
+        bot.register_next_step_handler(send,translated)
     
     
     
