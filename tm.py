@@ -68,6 +68,10 @@ def translated_menu_3(message):
         bot.register_next_step_handler(send,translated)
 
 def translated(message):
+    if message.text=="/start":
+        bot.register_next_step_handler(send,firest)
+    else:
+        bot.register_next_step_handler(send,translated)
     url='https://translate.yandex.net/api/v1.5/tr.json/translate?'
     key='trnsl.1.1.20190201T172728Z.34034e93ef318814.4cd85f71122011aa48770690493d232d5ff78c60'
     
@@ -78,10 +82,7 @@ def translated(message):
     key=telebot.types.ReplyKeyboardMarkup(one_time_keyboard=True,resize_keyboard=True)
     key.row("/start",)
     send=bot.send_message(message.chat.id,"Введите фразу",reply_markup=key)
-    if message.text=="/start":
-        bot.register_next_step_handler(send,firest)
-    else:
-        bot.register_next_step_handler(send,translated)
+    
     
     
     
