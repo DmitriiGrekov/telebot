@@ -66,9 +66,11 @@ def translated(message):
     url='https://translate.yandex.net/api/v1.5/tr.json/translate?'
     key='trnsl.1.1.20190201T172728Z.34034e93ef318814.4cd85f71122011aa48770690493d232d5ff78c60'
     TEXT=message.text
-    LANg=lang1
-    r=requests.post(url,data={'key':key,'text':TEXT,'lang':lang1 + "-"+lang2})
-    bot.send_message(message.chat.id,r.text)
+    Lang=lang1 + "-"+lang2
+    parametrs={'key':key,'lang':,'text':TEXT}
+    
+    r=requests.post(url,)
+    bot.send_message(message.chat.id,Lang)
     
     
     
