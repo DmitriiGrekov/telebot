@@ -52,23 +52,20 @@ def translated_menu_3(message):
     if message.text == 'Рус':
         lang2='ru'
         
-        while flag:
-            send=bot.send_message(message.chat.id,"Введите фразу")
-            bot.register_next_step_handler(send,translated)
+        send=bot.send_message(message.chat.id,"Введите фразу")
+        bot.register_next_step_handler(send,translated)
     
     
     elif message.text == 'Англ':
         lang2='en'
-        while flag:
-            send=bot.send_message(message.chat.id,"Введите фразу")
-            bot.register_next_step_handler(send,translated)
         
+        send=bot.send_message(message.chat.id,"Введите фразу")
+        bot.register_next_step_handler(send,translated)
     
     elif message.text == 'Франц':
         lang2='fr'
-        while flag:
-            send=bot.send_message(message.chat.id,"Введите фразу")
-            bot.register_next_step_handler(send,translated)
+        send=bot.send_message(message.chat.id,"Введите фразу")
+        bot.register_next_step_handler(send,translated)
 
 def translated(message):
     url='https://translate.yandex.net/api/v1.5/tr.json/translate?'
@@ -78,6 +75,9 @@ def translated(message):
     LANg=lang1+"-"+lang2
     r=requests.post(url,data={'key':key,'text':TEXT,'lang':LANg})
     bot.send_message(message.chat.id,*eval(r.text)['text'])
+    send=bot.send_message(message.chat.id,"Введите фразу")
+    bot.register_next_step_handler(send,translated)
+    
     
     
     
